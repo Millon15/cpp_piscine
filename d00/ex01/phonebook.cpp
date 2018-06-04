@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/04 12:18:21 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/04 12:18:23 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/04 12:18:02 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/04 21:34:43 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "phonebook.hpp"
 
-int			main( int ac, char **av ) {
+int			main( void )
+{
 
-	int		length;
+	std::string		command;
+	Phonebook		instance;
 
-	if (ac == 1) {
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+	while (std::cin) {
+		std::cout << "Please, enter the command: ";
+		std::getline(std::cin, command);
+		if ( command == "EXIT" ) return 1;
+		else if ( command == "ADD" ) instance.add_contact();
+		else if ( command == "SEARCH" ) instance.search_by_contacts();
 	}
-
-	for ( size_t i = 1; i < ac; i++ ) {
-
-		length = strlen(av[i]);
-		for ( size_t g = 0; g < length; g++ ) {
-			av[i][g] = toupper( av[i][g] );
-		}
-
-		std::cout << av[i];
-
-	}
-	std::cout << std::endl;
+	std::cout << "^D" << std::endl;
 
 	return 0;
 
