@@ -6,15 +6,17 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/04 12:18:09 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/05 18:38:28 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/05 18:44:07 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 C		=	clang++
 FLAGS	=	-Wall -Wextra -Werror
 
-NAME	=	phonebook
-SRC		=	main.cpp Phonebook.class.cpp 
+NAME	=	account
+RES		=	resources/
+SRC		=	Account.class.cpp \
+			$(RES)test.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
 

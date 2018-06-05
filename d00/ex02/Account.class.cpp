@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Account.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/04 12:18:02 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/04 21:34:43 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/05 17:06:01 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/05 18:32:52 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "./resources/Account.class.hpp"
+#include <iostream>
 
-int			main( void )
+int Account::_nbAccounts(0);
+
+Account::Account( int initial_deposit )
 {
-
-	std::string		command;
-	Phonebook		instance;
-
-	while (std::cin) {
-		std::cout << "Please, enter the command: ";
-		std::getline(std::cin, command);
-		if ( command == "EXIT" ) return 1;
-		else if ( command == "ADD" ) instance.add_contact();
-		else if ( command == "SEARCH" ) instance.search_by_contacts();
-	}
-	std::cout << "^D" << std::endl;
-
-	return 0;
-
+	std::cout << "index:" << (_nbAccounts++) << ";" << "amount:" << initial_deposit << ";" << "created";
 }

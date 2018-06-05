@@ -6,24 +6,26 @@
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 12:18:06 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/04 21:49:33 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/05 14:16:45 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-Phonebook::Phonebook( void ) {
-	return;
+Phonebook::Phonebook( void ) : gl_ci(0)
+{
+	return ;
 }
 
 Phonebook::~Phonebook( void ) {
-	return;
+	return ;
 }
 
 void		Phonebook::add_contact( void ) {
 
 	if (gl_ci >= 8) {
-		std::cout << "There are no more space for another contacts!" << std::endl;
+		std::cout << "There are no more space for another contacts!" \
+		<< std::endl;
 		return ;
 	}
 
@@ -51,7 +53,7 @@ void		Phonebook::add_contact( void ) {
 	std::getline(std::cin, gl_cont[gl_ci].darkest_secret);
 
 	std::cout << std::endl;
-	gl_ci++;
+	this->gl_ci++;
 
 }
 

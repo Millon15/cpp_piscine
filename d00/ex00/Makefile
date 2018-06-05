@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/04 12:18:27 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/04 12:18:29 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/05 15:13:53 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC		=	megaphone.cpp
 OBJ		=	$(SRC:.cpp=.o)
 
 
-all: $(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJ)
 	$(C) $(FLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c
