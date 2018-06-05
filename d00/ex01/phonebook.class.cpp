@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.class.cpp                                :+:      :+:    :+:   */
+/*   Phonebook.class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 12:18:06 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/05 14:16:45 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/05 23:16:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.class.hpp"
 
 Phonebook::Phonebook( void ) : gl_ci(0)
 {

@@ -10,8 +10,8 @@
 // ************************************************************************** //
 //                               Account Class                                //
 // ************************************************************************** //
-class Account {
 
+class Account {
 
 public:
 
@@ -45,6 +45,7 @@ private:
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
+	int				_nbCheckAmountCalls;
 
 	Account( void );
 

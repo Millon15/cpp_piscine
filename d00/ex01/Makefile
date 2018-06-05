@@ -6,7 +6,7 @@
 #    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/04 12:18:09 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/05 18:38:28 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/05 23:16:35 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ $(NAME): $(OBJ)
 	$(C) -o $(NAME) $(FLAGS) $(OBJ)
 
 %.o: %.cpp
-	$(C) $(FLAGS) -c $@ -o $<
+	$(C) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
