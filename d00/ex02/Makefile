@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+         #
+#    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/04 12:18:09 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/05 23:27:05 by vbrazas          ###   ########.fr        #
+#    Updated: 2018/06/18 12:35:56 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,5 +35,9 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+test: all
+	./$(NAME) > 1
+	diff 1 $(RES)/tracing_paper.log
 
 .PHONY: all clean fclean re

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazas <vbrazas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/04 12:17:55 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/05 14:11:27 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/18 12:20:29 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ private:
 		std::string		darkest_secret;
 	}				t_con;
 
-	int				gl_ci;
-	t_con			gl_cont[8];
+	int				gl_cont_iter;
+	t_con			gl_contacts[8];
 
 	void			table_out_helper( std::string str, \
 					bool isstart, bool isend );
