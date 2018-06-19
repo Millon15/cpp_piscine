@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieEvent.cpp                                    :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 19:41:38 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:46:51 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 12:36:54 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 13:52:22 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ZombieEvent.hpp"
+#include "ZombieHorde.hpp"
 
-ZombieEvent::ZombieEvent( void )
+ZombieHorde::ZombieHorde( int N ) : _numberOfZombies(N)
 {
-	return ;
+	_zombies = new Zombie[_numberOfZombies];
+
+	for ( int i = 0; i < _numberOfZombies; i++ ) {
+		_zombies[i].setName(makeRandomString(true));
+		_zombies[i].setType(makeRandomString(false));
+	}
 }
 
-ZombieEvent::~ZombieEvent( void )
+ZombieHorde::~ZombieHorde( void )
 {
-	return ;
+	delete [] _zombies;
 }
 
 
 
-std::string		ZombieEvent::makeRandomString( bool startFromCapital )
+std::string		ZombieHorde::makeRandomString( bool startFromCapital )
 {
 	int				terminator = rand() % 10;
 	char			randomName[terminator + 1];
@@ -40,21 +45,9 @@ std::string		ZombieEvent::makeRandomString( bool startFromCapital )
 
 
 
-void			ZombieEvent::randomChump( void )
+void			ZombieHorde::annonce( void )
 {
-	Zombie			randomZombie(makeRandomString(true), makeRandomString(false));
-
-	randomZombie.annonce();
-}
-
-void			ZombieEvent::setZombieType( Zombie* theZombie, std::string type )
-{
-	theZombie->setType(type);
-}
-
-Zombie*			ZombieEvent::newZombie( std::string name, std::string type )
-{
-	Zombie*	newZombie = new Zombie(name, type);
-
-	return newZombie;
+	for ( int i = 0; i < _numberOfZombies; i++ ) {
+		_zombies[i].annonce();
+	}
 }

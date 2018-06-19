@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 19:37:11 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:28:39 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 12:35:42 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 13:51:49 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZombieEvent_hpp
-#define ZombieEvent_hpp
+#ifndef ZombieHorde_hpp
+#define ZombieHorde_hpp
 
 #include "Zombie.hpp"
-#include <cstdlib>
 
-class ZombieEvent {
+class ZombieHorde {
 
 public:
-	ZombieEvent( void );
-	~ZombieEvent( void );
+	ZombieHorde( int N );
+	~ZombieHorde( void );
 
-	void			setZombieType( Zombie* theZombie, std::string type );
-	Zombie*			newZombie( std::string name, std::string type );
-	void			randomChump( void );
+	void			annonce( void );
 
 private:
+	int			_numberOfZombies;
+	Zombie*		_zombies;
+
 	std::string		makeRandomString( bool startFromCapital );
 
 };

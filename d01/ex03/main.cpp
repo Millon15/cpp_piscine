@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 19:37:11 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:28:39 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 12:37:30 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 13:53:52 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZombieEvent_hpp
-#define ZombieEvent_hpp
+#include "ZombieHorde.hpp"
 
-#include "Zombie.hpp"
-#include <cstdlib>
+int		main( void )
+{
+	ZombieHorde		horde(10);
 
-class ZombieEvent {
+	horde.annonce;
 
-public:
-	ZombieEvent( void );
-	~ZombieEvent( void );
-
-	void			setZombieType( Zombie* theZombie, std::string type );
-	Zombie*			newZombie( std::string name, std::string type );
-	void			randomChump( void );
-
-private:
-	std::string		makeRandomString( bool startFromCapital );
-
-};
-
-#endif
+	system("leaks -q a.out");
+	return 0;
+}
