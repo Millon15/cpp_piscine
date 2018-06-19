@@ -5,36 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 17:44:04 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:57:34 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 16:07:09 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 16:55:46 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
+#include "Human.hpp"
 #include <iostream>
-#include <cstdlib>
-
-static void	ponyOnTheHeap( void )
-{
-	const Pony*	Karl = new Pony(true);
-
-	std::cout << "Karl is " << (Karl->isUnicorn ? "unicorn" : "pony") << std::endl;
-
-	delete Karl;
-}
-
-static void	ponyOnTheStack( void )
-{
-	const Pony	Piter;
-
-	std::cout << "Piter is " << (Piter.isUnicorn ? "unicorn" : "pony") << std::endl;
-}
 
 int		main( void )
 {
-	ponyOnTheHeap();
-	ponyOnTheStack();
+	Human		bob;
 
-	system("leaks -q a.out");
+	std::cout << bob.identify() << std::endl;
+	std::cout << bob.getBrain().identify() << std::endl;
+
 	return 0;
 }

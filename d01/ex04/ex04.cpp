@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ex04.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 17:44:04 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:57:34 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 14:03:53 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 14:07:18 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
 #include <iostream>
-#include <cstdlib>
-
-static void	ponyOnTheHeap( void )
-{
-	const Pony*	Karl = new Pony(true);
-
-	std::cout << "Karl is " << (Karl->isUnicorn ? "unicorn" : "pony") << std::endl;
-
-	delete Karl;
-}
-
-static void	ponyOnTheStack( void )
-{
-	const Pony	Piter;
-
-	std::cout << "Piter is " << (Piter.isUnicorn ? "unicorn" : "pony") << std::endl;
-}
 
 int		main( void )
 {
-	ponyOnTheHeap();
-	ponyOnTheStack();
+	const std::string	brain("HI THIS IS BRAIN");
+	const std::string*	brainPtr = &brain;
+	const std::string&	brainRef = brain;
 
-	system("leaks -q a.out");
+	std::cout << "Display string via pointer: " << *brainPtr << std::endl;
+	std::cout << "Display string via reference: " << brainRef << std::endl;
+
 	return 0;
 }

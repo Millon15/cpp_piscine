@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 12:35:42 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 13:51:49 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/19 13:57:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ZombieHorde_hpp
 
 #include "Zombie.hpp"
+#include <cstdlib>
 
 class ZombieHorde {
 

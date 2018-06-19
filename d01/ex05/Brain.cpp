@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 18:41:12 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 18:10:45 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 16:03:45 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 18:06:58 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Brain.hpp"
 
-void	memoryLeak( void )
+Brain::Brain( bool isSmart ) : _isSmart(isSmart)
 {
-	std::string*		panthere = new std::string("String panthere");
-
-	std::cout << *panthere << std::endl;
-
-	delete panthere;
+	if (_isSmart || !_isSmart)
+		_addres << this;
 }
 
-int		main( void )
+Brain::~Brain( void )
 {
-	memoryLeak();
+	return ;
+}
 
-	system("leaks -q a.out");
-	return 0;
+
+
+std::string			Brain::identify( void ) const
+{
+	return _addres.str();
 }
