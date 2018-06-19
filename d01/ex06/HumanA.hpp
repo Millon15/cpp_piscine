@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Human.hpp                                          :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/19 16:08:39 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 18:56:23 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 18:57:42 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 19:16:14 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Human_hpp
-#define Human_hpp
+#ifndef HumanA_hpp
+#define HumanA_hpp
 
-#include "Brain.hpp"
+#include "Weapon.hpp"
+#include <iostream>
 
-class Human {
+class HumanA {
 
 public:
-	Human( void );
-	~Human( void );
+	HumanA( std::string name, const Weapon& type );
+	~HumanA( void );
 
-	std::string			identify( void ) const;
-	const Brain&		getBrain( void ) const;
+	void				attack( void ) const;
 
 private:
-	const Brain			_brain;
+	const std::string	_name;
+	const Weapon&		_weapon;
 
 };
 

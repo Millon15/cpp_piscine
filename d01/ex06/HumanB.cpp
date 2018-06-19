@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Human.hpp                                          :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/19 16:08:39 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 18:56:23 by vbrazas          ###   ########.fr       */
+/*   Created: 2018/06/19 18:57:11 by vbrazas           #+#    #+#             */
+/*   Updated: 2018/06/19 19:37:28 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Human_hpp
-#define Human_hpp
+#include "HumanB.hpp"
 
-#include "Brain.hpp"
+HumanB::HumanB( std::string name ) : _name(name)
+{
+	return ;
+}
 
-class Human {
+HumanB::~HumanB( void )
+{
+	return ;
+}
 
-public:
-	Human( void );
-	~Human( void );
 
-	std::string			identify( void ) const;
-	const Brain&		getBrain( void ) const;
+void				HumanB::attack( void ) const
+{
+	std::cout << _name << " attacks with his " << _weapon->getType() << std::endl;
+}
 
-private:
-	const Brain			_brain;
-
-};
-
-#endif
+void				HumanB::setWeapon( Weapon& someWeapon )
+{
+	_weapon = &someWeapon;
+}
