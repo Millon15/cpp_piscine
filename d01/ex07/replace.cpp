@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 19:53:46 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/19 22:11:13 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/20 14:29:37 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#define BUFF_SIZE 4096
 
 int		main( int ac, char **av )
 {
@@ -30,10 +29,6 @@ int		main( int ac, char **av )
 	const std::string		toReplace(av[3]);
 	std::ifstream			fileToFindIn(fileName);
 	std::ofstream			fileToWriteReplacements(fileName + ".replace");
-	std::stringstream		ss;
-	std::string				s;
-	char					buffer[BUFF_SIZE];
-
 	if ( !fileToFindIn || !fileToWriteReplacements )
 	{
 		std::cerr << "Some error occurred: not valid arguments" << std::endl;
@@ -41,29 +36,29 @@ int		main( int ac, char **av )
 		return 2;
 	}
 
-	do {
-
-		if ( ss.fail() ) {
-			std::cerr << "Some error occurred: Logical error on i/o operation OR read/writing error on i/o operation" << std::endl;
-			return 2;
-		}
-		fileToFindIn.read(buffer, BUFF_SIZE);
-		ss << buffer;
-
-	} while( ( fileToFindIn.gcount() && !fileToFindIn.eof() ) || ss.fail() );
-
-	s = ss.str();
+	fileToFindIn.seekg(0, fileToFindIn.end);
+	const size_t			length(fileToFindIn.tellg());
+	if (length == std::string::npos) {
+		std::cerr << "Some error occurred: cannot count length of file" << std::endl;
+		return 3;
+	}
+	fileToFindIn.seekg(0, fileToFindIn.beg);
+	char*					buffer = new char[length];
+	fileToFindIn.read(buffer, length);
+	std::string				s(buffer);
 
 	for ( 
 		size_t pos = s.find(toFind);
-		pos != s.npos;
-		pos = s.find(toFind, pos + 1)
+		pos != std::string::npos;
+		pos = s.find(toFind, pos + toReplace.length())
 	)
 	{
-		s.replace( pos, toReplace.length() - 1, toReplace );
+		s.replace( pos, toFind.length(), toReplace );
 	}
 
 	fileToWriteReplacements	<< s;
+
+	delete [] buffer;
 
 	return 0;
 }
