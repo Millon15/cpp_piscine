@@ -6,20 +6,21 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:22:57 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/20 17:57:01 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/20 20:49:20 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <fstream>
 #include <iostream>
+#include <cstdio>
 
 void	readFromCIN( void )
 {
 	while ( std::cout << std::cin.rdbuf() );
 	std::cin.clear();
-	std::cin.ignore();
 	std::cout.clear();
+	freopen(NULL, "r", stdin);
+	freopen(NULL, "w", stdout);
 }
 		
 int		main( int ac, char** av )
