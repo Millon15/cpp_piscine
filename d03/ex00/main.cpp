@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:26 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 22:34:06 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/22 23:02:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int		main( void )
 	f.vaulthunter_dot_exe("Yourself");
 	f.vaulthunter_dot_exe("Faggot");
 	f.vaulthunter_dot_exe("Nazi");
-	std::cout << b.getEnergyPoints() << std::endl;
+	std::cout << f.getEnergyPoints() << std::endl;
 
+	b = f;
 	b.rangedAttack(f.getName());
 	b.meleeAttack("You");
 	b.takeDamage(12);

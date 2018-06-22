@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:42:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/22 23:28:51 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 /*****************************************************************************/
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
 
-FragTrap::FragTrap( std::string name ) :
+ScavTrap::ScavTrap( std::string name ) :
 	Name(name),
 	Hit_points(100),
 	Max_hit_points(100),
@@ -33,19 +33,19 @@ FragTrap::FragTrap( std::string name ) :
 	Trololo_attack_damage(1),
 	Laser_attack_damage(1)
 {
-	std::cout << "Directive one: Protect humanity! Directive two: Obey Jack at all costs. Directive three: Dance!" << std::endl;
+	std::cout << "Commencing directive three! Uhntssuhntssuhntss..." << std::endl;
 	return ;
 }
 
-FragTrap::FragTrap( const FragTrap &toCopy )
+ScavTrap::ScavTrap( const ScavTrap &toCopy )
 {
-	std::cout << "Yes. Remember what? Are... are you my father?" << std::endl;
+	std::cout << "I can do more than open doors sir! We CL4P-TP units can be programmed to do anything from open doors to ninja-sassinate highly important Janitory officals!" << std::endl;
 	*this = toCopy;
 }
 
-FragTrap::~FragTrap( void )
+ScavTrap::~ScavTrap( void )
 {
-	std::cout << "I'M DEAD I'M DEAD OHMYGOD I'M DEAD!" << std::endl;
+	std::cout << "Have a lovely afternoon, and thank you for using Hyperion Robot Services. Let me know if you have any other portal-rific needs!" << std::endl;
 	return ;
 }
 
@@ -54,9 +54,8 @@ FragTrap::~FragTrap( void )
 /*************************** Overloaded Operators ****************************/
 /*****************************************************************************/
 
-FragTrap			&FragTrap::operator=( const FragTrap &toEquate )
+ScavTrap			&ScavTrap::operator=( const ScavTrap &toEquate )
 {
-	this->Name = toEquate.Name;
 	this->Hit_points = toEquate.Hit_points;
 	this->Max_hit_points = toEquate.Max_hit_points;
 	this->Energy_points = toEquate.Energy_points;
@@ -65,12 +64,7 @@ FragTrap			&FragTrap::operator=( const FragTrap &toEquate )
 	this->Melee_attack_damage = toEquate.Melee_attack_damage;
 	this->Ranged_attack_damage = toEquate.Ranged_attack_damage;
 	this->Armor_damage_reduction = toEquate.Armor_damage_reduction;
-	this->VaulthunterDotExe_attack_damage = toEquate.VaulthunterDotExe_attack_damage;
-	this->Meme_attack_damage = toEquate.Meme_attack_damage;
-	this->Fart_attack_damage = toEquate.Fart_attack_damage;
-	this->Weed_attack_damage = toEquate.Weed_attack_damage;
-	this->Trololo_attack_damage = toEquate.Trololo_attack_damage;
-	this->Laser_attack_damage = toEquate.Laser_attack_damage;
+	this->Name = toEquate.Name;
 
 	return *this;
 }
@@ -84,56 +78,12 @@ FragTrap			&FragTrap::operator=( const FragTrap &toEquate )
 ** Methods for getting random values
 */
 
-int					FragTrap::getRandomNumber( const unsigned int amount ) const
+int					ScavTrap::getRandomNumber( const unsigned int amount ) const
 {
 	srand(clock());
 	const int		i = ( rand() % amount );
 
-	return ( (i >= 0) ? i : 0 );
-}
-
-/*
-** VaultHunter.EXE attacks
-*/
-
-unsigned int	FragTrap::memeAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with memes, causing over " << this->Meme_attack_damage;
-	std::cout << ( (this->Meme_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
-	return this->Meme_attack_damage;
-}
-
-unsigned int	FragTrap::fartAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a fart, causing " << this->Fart_attack_damage;
-	std::cout << ( (this->Fart_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
-	return this->Fart_attack_damage;
-}
-
-unsigned int	FragTrap::weedAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a joint, causing " << this->Weed_attack_damage;
-	std::cout << ( (this->Weed_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
-	return this->Weed_attack_damage;
-}
-
-unsigned int	FragTrap::trololoAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with skittles, causing " << this->Trololo_attack_damage;
-	std::cout << ( (this->Trololo_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
-	return this->Trololo_attack_damage;
-}
-
-unsigned int	FragTrap::laserAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a laser, causing " << this->Laser_attack_damage;
-	std::cout << ( (this->Laser_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
-	return this->Laser_attack_damage;
+	return ( (i > 0) ? i : 0 );
 }
 
 /*****************************************************************************/
@@ -141,10 +91,10 @@ unsigned int	FragTrap::laserAttack( const std::string &target ) const
 /*****************************************************************************/
 
 /*
-** FragTrap attacks
+** ScavTrap attacks
 */
 
-void			FragTrap::rangedAttack( const std::string &target ) const
+void			ScavTrap::rangedAttack( const std::string &target ) const
 {
 	const unsigned int	fri(6);
 	const std::string	funnyReferences[fri] = {
@@ -156,11 +106,11 @@ void			FragTrap::rangedAttack( const std::string &target ) const
 		"Shwing!"
 	};
 
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target << " at range, causing ";
+	std::cout << "FR3G-TP " << this->Name << " attacks " << target << " at range, causing ";
 	std::cout << this->Ranged_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
 }
 
-void			FragTrap::meleeAttack( const std::string &target ) const
+void			ScavTrap::meleeAttack( const std::string &target ) const
 {
 	const unsigned int	fri(4);
 	const std::string	funnyReferences[fri] = {
@@ -170,15 +120,15 @@ void			FragTrap::meleeAttack( const std::string &target ) const
 		"Bop!"
 	};
 
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target << " at melee, causing ";
+	std::cout << "FR3G-TP " << this->Name << " attacks " << target << " at melee, causing ";
 	std::cout << this->Melee_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
 }
 
 /*
-** FragTrap damage methods
+** ScavTrap damage methods
 */
 
-void			FragTrap::takeDamage( unsigned int amount )
+void			ScavTrap::takeDamage( unsigned int amount )
 {
 	const unsigned int	fri(7);
 	const std::string	funnyReferences[fri] = {
@@ -218,7 +168,7 @@ void			FragTrap::takeDamage( unsigned int amount )
 	};
 	const unsigned int	finalDamegeAmount = amount - this->Armor_damage_reduction;
 
-	std::cout << "FR4G-TP " << this->Name;
+	std::cout << "FR3G-TP " << this->Name;
 	if ( finalDamegeAmount >= this->Hit_points ) {
 		this->Hit_points = 0;
 		std::cout << " becomes dead, when tooks " << finalDamegeAmount;
@@ -233,7 +183,7 @@ void			FragTrap::takeDamage( unsigned int amount )
 	}
 }
 
-void			FragTrap::beRepaired( unsigned int amount )
+void			ScavTrap::beRepaired( unsigned int amount )
 {
 	const unsigned int		fri(5);
 	const std::string	funnyReferences[fri] = {
@@ -245,7 +195,7 @@ void			FragTrap::beRepaired( unsigned int amount )
 	};
 	const unsigned int	finalRepairAmount = ( amount + this->Hit_points );
 
-	std::cout << "FR4G-TP " << this->Name;
+	std::cout << "FR3G-TP " << this->Name;
 	if ( finalRepairAmount >= this->Max_hit_points ) {
 		this->Hit_points = this->Max_hit_points;
 		std::cout << " repairs full health, that contains " << this->Max_hit_points;
@@ -259,58 +209,26 @@ void			FragTrap::beRepaired( unsigned int amount )
 }
 
 /*
-** VaultHunter.EXE method
+** challengeNewcomer method
 */
 
-void			FragTrap::vaulthunter_dot_exe( const std::string &target )
+void			ScavTrap::challengeNewcomer( const std::string &target )
 {
-	const unsigned int		fri(25);
-	const std::string		funnyReferences[fri] = {
-		"This time it'll be awesome, I promise!",
-		"Hey everybody, check out my package!",
-		"Place your bets!",
-		"Defragmenting!",
-		"Recompiling my combat code!",
-		"Running the sequencer!",
-		"It's happening... it's happening!",
-		"It's about to get magical!",
-		"I'm pulling tricks outta my hat!",
-		"You can't just program this level of excitement!",
-		"What will he do next?",
-		"Things are about to get awesome!",
-		"Let's get this party started!",
-		"Glitchy weirdness is term of endearment, right?",
-		"Push this button, flip this dongle, voila! Help me!",
-		"square the I, carry the 1... YES!",
-		"Resequencing combat protocols!",
-		"Look out everybody, things are about to get awesome!",
-		"I have an IDEA!",
-		"Round and around and around she goes!",
-		"It's like a box of chocolates...",
-		"Step right up to the sequence of Trapping!",
-		"Hey everybody, check out my package!",
-		"Loading combat packages!",
-		"F to the R to the 4 to the G to the WHAAT!"
-	};
 	const unsigned int		fti(5);
-
-	typedef unsigned int (FragTrap::*FlagTrapMemberFucntion)(const std::string &) const;
-	FlagTrapMemberFucntion p[fti] = {
-		&FragTrap::memeAttack,
-		&FragTrap::fartAttack,
-		&FragTrap::weedAttack,
-		&FragTrap::laserAttack,
-		&FragTrap::trololoAttack
+	const std::string		s[fti] = {
+		"Russian roulette! What's the worst that can happen to the newcomer? More specifically, what's the worse that could happen to ScavTrap since it's made of, you know... junk?",
+		"Doing wheelies on a meat bicycle! Perfectly kosher, and to a certain degree a bit delicious if you think about it.",
+		"DANCE PARTY! Get your groove on and let's see who can twerk and shake those hips the best!",
+		"Friendly duel, don't worry because you're a newcomer you are guaranteed to lose, watch my karate moves! Hyah!",
+		"Non stop loot box addiction! Let's see who can open the most loot box before our wallets are empty!"
 	};
 
 	if ( this->Energy_points >= 25 ) {
 		this->Energy_points -= 25;
-		this->VaulthunterDotExe_attack_damage = \
-		( this->*p[getRandomNumber(fti)] )(target);
-		std::cout << funnyReferences[getRandomNumber(fri)] << std::endl;
+		std::cout << "[" << this->Name << "] offer a challenge for newcomer<" << target << ">: " << s[getRandomNumber(fti)] << std::endl;
 	}
 	else {
-		std::cout << "I can't launch VaultHunter.EXE coz i'm out of energy points(" << std::endl;
+		std::cout << "I can't launch challengeNewcomer coz i'm out of energy points(" << std::endl;
 	}
 }
 
@@ -318,62 +236,62 @@ void			FragTrap::vaulthunter_dot_exe( const std::string &target )
 ** Getters
 */
 
-std::string		FragTrap::getName( void ) const
+std::string		ScavTrap::getName( void ) const
 {
 	return (this->Name);
 }
 
-unsigned int	FragTrap::getMeleeAttackDamage( void ) const
+unsigned int	ScavTrap::getMeleeAttackDamage( void ) const
 {
 	return (this->Melee_attack_damage);
 }
 
-unsigned int	FragTrap::getRangedAttackDamage( void ) const
+unsigned int	ScavTrap::getRangedAttackDamage( void ) const
 {
 	return (this->Ranged_attack_damage);
 }
 
-unsigned int	FragTrap::getArmourDamageReduction( void ) const
+unsigned int	ScavTrap::getArmourDamageReduction( void ) const
 {
 	return (this->Armor_damage_reduction);
 }
 
-unsigned int	FragTrap::getVaulHunter_dot_exeDamage( void ) const
+unsigned int	ScavTrap::getVaulHunter_dot_exeDamage( void ) const
 {
 	return (this->VaulthunterDotExe_attack_damage);
 }
 
-unsigned int	FragTrap::getMemeAttackDamage( void ) const
+unsigned int	ScavTrap::getMemeAttackDamage( void ) const
 {
 	return (this->Meme_attack_damage);
 }
 
-unsigned int	FragTrap::getFartAttackDamage( void ) const
+unsigned int	ScavTrap::getFartAttackDamage( void ) const
 {
 	return (this->Fart_attack_damage);
 }
 
-unsigned int	FragTrap::getWeedAttackDamage( void ) const
+unsigned int	ScavTrap::getWeedAttackDamage( void ) const
 {
 	return (this->Weed_attack_damage);
 }
 
-unsigned int	FragTrap::getTrololoAttackDamage( void ) const
+unsigned int	ScavTrap::getTrololoAttackDamage( void ) const
 {
 	return (this->Trololo_attack_damage);
 }
 
-unsigned int	FragTrap::getLaserAttackDamage( void ) const
+unsigned int	ScavTrap::getLaserAttackDamage( void ) const
 {
 	return (this->Laser_attack_damage);
 }
 
-unsigned int	FragTrap::getHitPoints( void ) const
+unsigned int	ScavTrap::getHitPoints( void ) const
 {
 	return (this->Hit_points);
 }
 
-unsigned int	FragTrap::getEnergyPoints( void ) const
+unsigned int	ScavTrap::getEnergyPoints( void ) const
 {
 	return (this->Energy_points);
 }
