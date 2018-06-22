@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 16:55:43 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 20:04:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/22 22:36:28 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,14 @@ private:
 	unsigned int	Laser_attack_damage;
 
 	// Random methods
-	int					getRandomNumber( const unsigned int , const bool  ) const;
-	const std::string	getFunnyReference( const std::string * ) const;
+	int				getRandomNumber( const unsigned int  ) const;
+
+	// VaultHunter.EXE attacks
+	unsigned int	memeAttack( const std::string &target ) const;
+	unsigned int	fartAttack( const std::string &target ) const;
+	unsigned int	weedAttack( const std::string &target ) const;
+	unsigned int	trololoAttack( const std::string &target ) const;
+	unsigned int	laserAttack( const std::string &target ) const;
 
 public:
 
@@ -52,19 +58,15 @@ public:
 
 	FragTrap		&operator=( const FragTrap & );
 
-	// FragTrap methods
+	// FragTrap attacks
 	void			rangedAttack( const std::string &target ) const;
 	void			meleeAttack( const std::string &target ) const;
+	// FragTrap damage methods
 	void			takeDamage( unsigned int amount );
 	void			beRepaired( unsigned int amount );
 
-	// VaultHunter.EXE methods
-	void			vaulthunter_dot_exe( const std::string &target ) const;
-	unsigned int	memeAttack( const std::string &target ) const;
-	unsigned int	fartAttack( const std::string &target ) const;
-	unsigned int	weedAttack( const std::string &target ) const;
-	unsigned int	trololoAttack( const std::string &target ) const;
-	unsigned int	laserAttack( const std::string &target ) const;
+	// VaultHunter.EXE method
+	void			vaulthunter_dot_exe( const std::string &target );
 
 	// Getters
 	std::string		getName( void ) const;
@@ -77,6 +79,8 @@ public:
 	unsigned int	getWeedAttackDamage( void ) const;
 	unsigned int	getTrololoAttackDamage( void ) const;
 	unsigned int	getLaserAttackDamage( void ) const;
+	unsigned int	getHitPoints( void ) const;
+	unsigned int	getEnergyPoints( void ) const;
 
 };
 

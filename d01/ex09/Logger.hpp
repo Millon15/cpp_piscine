@@ -6,16 +6,16 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:49:58 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/20 16:17:42 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/22 21:29:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Logger_hpp
-#define Logger_hpp
+#ifndef LOGGER_HPP
+# define LOGGER_HPP
 
-#include <string>
-#include <iostream>
-#include <fstream>
+# include <string>
+# include <iostream>
+# include <fstream>
 
 class Logger {
 

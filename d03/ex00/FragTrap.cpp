@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 20:05:46 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/22 22:42:05 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,60 @@ FragTrap			&FragTrap::operator=( const FragTrap &toEquate )
 /****************************** Private Methods ******************************/
 /*****************************************************************************/
 
-int					FragTrap::getRandomNumber( const unsigned int amount, const bool inclusive ) const
+/*
+** Methods for getting random values
+*/
+
+int					FragTrap::getRandomNumber( const unsigned int amount ) const
 {
 	srand(clock());
-	const int		i = ( rand() % amount + inclusive );
+	const int		i = ( rand() % amount );
 
-	return i;
+	return ( (i >= 0) ? i : 0 );
 }
 
-const std::string	FragTrap::getFunnyReference( const std::string *funnyReferences ) const
+/*
+** VaultHunter.EXE attacks
+*/
+
+unsigned int	FragTrap::memeAttack( const std::string &target ) const
 {
-	return funnyReferences[getRandomNumber( sizeof(funnyReferences) / sizeof(std::string), false )];
+	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
+	std::cout << " with memes, causing over " << this->Meme_attack_damage;
+	std::cout << ( (this->Meme_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
+	return this->Meme_attack_damage;
+}
+
+unsigned int	FragTrap::fartAttack( const std::string &target ) const
+{
+	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
+	std::cout << " with a fart, causing " << this->Fart_attack_damage;
+	std::cout << ( (this->Fart_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
+	return this->Fart_attack_damage;
+}
+
+unsigned int	FragTrap::weedAttack( const std::string &target ) const
+{
+	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
+	std::cout << " with a joint, causing " << this->Weed_attack_damage;
+	std::cout << ( (this->Weed_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
+	return this->Weed_attack_damage;
+}
+
+unsigned int	FragTrap::trololoAttack( const std::string &target ) const
+{
+	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
+	std::cout << " with skittles, causing " << this->Trololo_attack_damage;
+	std::cout << ( (this->Trololo_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
+	return this->Trololo_attack_damage;
+}
+
+unsigned int	FragTrap::laserAttack( const std::string &target ) const
+{
+	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
+	std::cout << " with a laser, causing " << this->Laser_attack_damage;
+	std::cout << ( (this->Laser_attack_damage < 2) ? " point of damage ! " : " points of damage ! " );
+	return this->Laser_attack_damage;
 }
 
 /*****************************************************************************/
@@ -97,12 +140,13 @@ const std::string	FragTrap::getFunnyReference( const std::string *funnyReference
 /*****************************************************************************/
 
 /*
-** FragTrap methods
+** FragTrap attacks
 */
 
 void			FragTrap::rangedAttack( const std::string &target ) const
 {
-	const std::string	funnyReferences[] = {
+	const unsigned int	fri(6);
+	const std::string	funnyReferences[fri] = {
 		"Pop pop!"
 		"Crit-i-cal!"
 		"That looks like it hurts!"
@@ -112,12 +156,13 @@ void			FragTrap::rangedAttack( const std::string &target ) const
 	};
 
 	std::cout << "FR4G-TP " << this->Name << " attacks " << target << " at range, causing ";
-	std::cout << this->Ranged_attack_damage << " points of damage ! " << getFunnyReference(funnyReferences) << std::endl;
+	std::cout << this->Ranged_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
 }
 
 void			FragTrap::meleeAttack( const std::string &target ) const
 {
-	const std::string	funnyReferences[] = {
+	const unsigned int	fri(4);
+	const std::string	funnyReferences[fri] = {
 		"Hyah!",
 		"Heyyah!",
 		"Take that!",
@@ -125,12 +170,17 @@ void			FragTrap::meleeAttack( const std::string &target ) const
 	};
 
 	std::cout << "FR4G-TP " << this->Name << " attacks " << target << " at melee, causing ";
-	std::cout << this->Melee_attack_damage << " points of damage ! " << getFunnyReference(funnyReferences) << std::endl;
+	std::cout << this->Melee_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
 }
+
+/*
+** FragTrap damage methods
+*/
 
 void			FragTrap::takeDamage( unsigned int amount )
 {
-	const std::string	funnyReferences[] = {
+	const unsigned int	fri(7);
+	const std::string	funnyReferences[fri] = {
 		"Why do I even feel pain?!",
 		"Why did they build me out of galvanized flesh?!",
 		"Ow hohoho, that hurts! Yipes!",
@@ -139,7 +189,8 @@ void			FragTrap::takeDamage( unsigned int amount )
 		"Woah! Oh! Jeez!",
 		"If only my chassis... weren't made of recycled human body parts! Wahahaha!"
 	};
-	const std::string	crippleReferences[] = {
+	const unsigned int	cri(23);
+	const std::string	crippleReferences[cri] = {
 		"I'll stop talking when I'm dead!",
 		"I'll die the way I lived: annoying!",
 		"Come back here! I'll gnaw your legs off!",
@@ -170,18 +221,21 @@ void			FragTrap::takeDamage( unsigned int amount )
 	if ( finalDamegeAmount >= this->Hit_points ) {
 		this->Hit_points = 0;
 		std::cout << " becomes dead, when tooks " << finalDamegeAmount;
-		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " ) << getFunnyReference(crippleReferences) << std::endl;
+		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " );
+		std::cout << crippleReferences[getRandomNumber(cri)] << std::endl;
 	}
 	else {
 		this->Hit_points -= finalDamegeAmount;
 		std::cout << " repairs " << finalDamegeAmount;
-		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " ) << getFunnyReference(funnyReferences) << std::endl;
+		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " );
+		std::cout << funnyReferences[getRandomNumber(fri)] << std::endl;
 	}
 }
 
 void			FragTrap::beRepaired( unsigned int amount )
 {
-	const std::string	funnyReferences[] = {
+	const unsigned int		fri(5);
+	const std::string	funnyReferences[fri] = {
 		"Health! Eww, what flavor is red?"
 		"Health over here!"
 		"Sweet life juice!"
@@ -194,23 +248,23 @@ void			FragTrap::beRepaired( unsigned int amount )
 	if ( finalRepairAmount >= this->Max_hit_points ) {
 		this->Hit_points = this->Max_hit_points;
 		std::cout << " repairs full health, that contains " << this->Max_hit_points;
-		std::cout << " hit poins ! " << getFunnyReference(funnyReferences) << std::endl;
+		std::cout << " hit poins ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
 	}
 	else {
 		this->Hit_points += finalRepairAmount;
 		std::cout << " repairs " << finalRepairAmount;
-		std::cout << ( (finalRepairAmount < 2) ? " hit point ! " : " hit poins ! " ) << getFunnyReference(funnyReferences) << std::endl;
+		std::cout << ( (finalRepairAmount < 2) ? " hit point ! " : " hit poins ! " ) << funnyReferences[getRandomNumber(fri)] << std::endl;
 	}
 }
 
-
 /*
-** VaultHunter.EXE methods
+** VaultHunter.EXE method
 */
 
-void			FragTrap::vaulthunter_dot_exe( const std::string &target ) const
+void			FragTrap::vaulthunter_dot_exe( const std::string &target )
 {
-	const std::string	funnyReferences[] = {
+	const unsigned int		fri(25);
+	const std::string	funnyReferences[fri] = {
 		"This time it'll be awesome, I promise!"
 		"Hey everybody, check out my package!"
 		"Place your bets!"
@@ -237,7 +291,9 @@ void			FragTrap::vaulthunter_dot_exe( const std::string &target ) const
 		"Loading combat packages!"
 		"F to the R to the 4 to the G to the WHAAT!"
 	};
-	unsigned int (FragTrap::*p[])( const std::string & ) = {
+	const unsigned int		fti(5);
+	typedef unsigned int (FragTrap::*FlagTrapMemberFucntion)(const std::string &) const;
+	FlagTrapMemberFucntion p[fti] = {
 		&FragTrap::memeAttack,
 		&FragTrap::fartAttack,
 		&FragTrap::weedAttack,
@@ -246,56 +302,14 @@ void			FragTrap::vaulthunter_dot_exe( const std::string &target ) const
 	};
 
 	if ( this->Energy_points >= 25 ) {
-
 		this->Energy_points -= 25;
 		this->VaulthunterDotExe_attack_damage = \
-		( this->*p[getRandomNumber( sizeof(this->*p) / sizeof(this->*p[0]), false )] )(target);
-		std::cout << getFunnyReference(funnyReferences) << std::endl;
-
+		( this->*p[getRandomNumber(fti)] )(target);
+		std::cout << funnyReferences[getRandomNumber(fri)] << std::endl;
 	}
 	else {
 		std::cout << "I can't launch VaultHunter.EXE coz i'm out of energy points(" << std::endl;
 	}
-}
-
-unsigned int	FragTrap::memeAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with memes, causing over " << this->Meme_attack_damage;
-	std::cout << " points of damage ! ";
-	return this->Meme_attack_damage;
-}
-
-unsigned int	FragTrap::fartAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a fart, causing " << this->Fart_attack_damage;
-	std::cout << " points of damage ! ";
-	return this->Fart_attack_damage;
-}
-
-unsigned int	FragTrap::weedAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a joint, causing " << this->Weed_attack_damage;
-	std::cout << " points of damage ! ";
-	return this->Weed_attack_damage;
-}
-
-unsigned int	FragTrap::trololoAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with skittles, causing " << this->Trololo_attack_damage;
-	std::cout << " points of damage ! ";
-	return this->Trololo_attack_damage;
-}
-
-unsigned int	FragTrap::laserAttack( const std::string &target ) const
-{
-	std::cout << "FR4G-TP " << this->Name << " attacks " << target;
-	std::cout << " with a laser, causing " << this->Laser_attack_damage;
-	std::cout << " points of damage ! ";
-	return this->Laser_attack_damage;
 }
 
 /*
@@ -350,4 +364,14 @@ unsigned int	FragTrap::getTrololoAttackDamage( void ) const
 unsigned int	FragTrap::getLaserAttackDamage( void ) const
 {
 	return (this->Laser_attack_damage);
+}
+
+unsigned int	FragTrap::getHitPoints( void ) const
+{
+	return (this->Hit_points);
+}
+
+unsigned int	FragTrap::getEnergyPoints( void ) const
+{
+	return (this->Energy_points);
 }
