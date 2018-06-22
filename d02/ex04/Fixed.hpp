@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 15:34:47 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/21 23:07:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/21 23:25:09 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <sstream>
 # include <string>
 # include <cmath>
 
