@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 16:55:43 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 22:36:28 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:25:01 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ private:
 	unsigned int	laserAttack( const std::string &target ) const;
 
 public:
-
+	FragTrap( void );
 	FragTrap( std::string );
 	FragTrap( const FragTrap & );
 	~FragTrap( void );

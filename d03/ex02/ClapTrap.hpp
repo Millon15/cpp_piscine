@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 16:55:43 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:38:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:11:10 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class ClapTrap {
 
-private:
+protected:
 	// Player attributes
 	std::string		Name;
 	unsigned int	Hit_points;
@@ -37,8 +37,16 @@ private:
 	int				getRandomNumber( const unsigned int  ) const;
 
 public:
-
-	ClapTrap( std::string );
+	ClapTrap( void );
+	ClapTrap(	std::string,
+				unsigned int,
+				unsigned int,
+				unsigned int,
+				unsigned int,
+				unsigned int,
+				unsigned int,
+				unsigned int,
+				unsigned int );
 	ClapTrap( const ClapTrap & );
 	~ClapTrap( void );
 

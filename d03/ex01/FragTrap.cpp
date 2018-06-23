@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:42:16 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:25:33 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,27 @@
 /*****************************************************************************/
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
+
+FragTrap::FragTrap( void ) :
+	Name("FR4G-TP"),
+	Hit_points(100),
+	Max_hit_points(100),
+	Energy_points(100),
+	Max_energy_points(100),
+	Level(1),
+	Melee_attack_damage(30),
+	Ranged_attack_damage(20),
+	Armor_damage_reduction(5),
+	VaulthunterDotExe_attack_damage(0),
+	Meme_attack_damage(1),
+	Fart_attack_damage(1),
+	Weed_attack_damage(1),
+	Trololo_attack_damage(1),
+	Laser_attack_damage(1)
+{
+	std::cout << "Commencing directive three! Uhntssuhntssuhntss..." << std::endl;
+}
+
 
 FragTrap::FragTrap( std::string name ) :
 	Name(name),

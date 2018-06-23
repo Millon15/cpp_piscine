@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 16:55:43 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:36:07 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:24:16 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ private:
 	int				getRandomNumber( const unsigned int  ) const;
 
 public:
-
+	ScavTrap( void );
 	ScavTrap( std::string );
 	ScavTrap( const ScavTrap & );
 	~ScavTrap( void );

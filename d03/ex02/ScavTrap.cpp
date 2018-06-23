@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:28:51 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:21:17 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,14 @@
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
 
-ScavTrap::ScavTrap( std::string name ) :
-	Name(name),
-	Hit_points(100),
-	Max_hit_points(100),
-	Energy_points(100),
-	Max_energy_points(100),
-	Level(1),
-	Melee_attack_damage(30),
-	Ranged_attack_damage(20),
-	Armor_damage_reduction(5),
-	VaulthunterDotExe_attack_damage(0),
-	Meme_attack_damage(1),
-	Fart_attack_damage(1),
-	Weed_attack_damage(1),
-	Trololo_attack_damage(1),
-	Laser_attack_damage(1)
+ScavTrap::ScavTrap( void ) : ClapTrap()
 {
-	std::cout << "Commencing directive three! Uhntssuhntssuhntss..." << std::endl;
-	return ;
+	std::cout << "Look out everybody! Things are about to get awesome!" << std::endl;
+}
+
+ScavTrap::ScavTrap( std::string name ) : ClapTrap( name, 100, 100, 100, 100, 1, 20, 15, 3 )
+{
+	std::cout << "This time it'll be awesome, I promise!" << std::endl;
 }
 
 ScavTrap::ScavTrap( const ScavTrap &toCopy )
@@ -46,7 +35,6 @@ ScavTrap::ScavTrap( const ScavTrap &toCopy )
 ScavTrap::~ScavTrap( void )
 {
 	std::cout << "Have a lovely afternoon, and thank you for using Hyperion Robot Services. Let me know if you have any other portal-rific needs!" << std::endl;
-	return ;
 }
 
 
@@ -69,144 +57,9 @@ ScavTrap			&ScavTrap::operator=( const ScavTrap &toEquate )
 	return *this;
 }
 
-
-/*****************************************************************************/
-/****************************** Private Methods ******************************/
-/*****************************************************************************/
-
-/*
-** Methods for getting random values
-*/
-
-int					ScavTrap::getRandomNumber( const unsigned int amount ) const
-{
-	srand(clock());
-	const int		i = ( rand() % amount );
-
-	return ( (i > 0) ? i : 0 );
-}
-
 /*****************************************************************************/
 /****************************** Public Methods *******************************/
 /*****************************************************************************/
-
-/*
-** ScavTrap attacks
-*/
-
-void			ScavTrap::rangedAttack( const std::string &target ) const
-{
-	const unsigned int	fri(6);
-	const std::string	funnyReferences[fri] = {
-		"Pop pop!",
-		"Crit-i-cal!",
-		"That looks like it hurts!",
-		"WOW! I hit 'em!",
-		"Extra ouch!",
-		"Shwing!"
-	};
-
-	std::cout << "FR3G-TP " << this->Name << " attacks " << target << " at range, causing ";
-	std::cout << this->Ranged_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
-}
-
-void			ScavTrap::meleeAttack( const std::string &target ) const
-{
-	const unsigned int	fri(4);
-	const std::string	funnyReferences[fri] = {
-		"Hyah!",
-		"Heyyah!",
-		"Take that!",
-		"Bop!"
-	};
-
-	std::cout << "FR3G-TP " << this->Name << " attacks " << target << " at melee, causing ";
-	std::cout << this->Melee_attack_damage << " points of damage ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
-}
-
-/*
-** ScavTrap damage methods
-*/
-
-void			ScavTrap::takeDamage( unsigned int amount )
-{
-	const unsigned int	fri(7);
-	const std::string	funnyReferences[fri] = {
-		"Why do I even feel pain?!",
-		"Why did they build me out of galvanized flesh?!",
-		"Ow hohoho, that hurts! Yipes!",
-		"My robotic flesh! AAHH!",
-		"Yikes! Ohhoho!",
-		"Woah! Oh! Jeez!",
-		"If only my chassis... weren't made of recycled human body parts! Wahahaha!"
-	};
-	const unsigned int	cri(23);
-	const std::string	crippleReferences[cri] = {
-		"I'll stop talking when I'm dead!",
-		"I'll die the way I lived: annoying!",
-		"Come back here! I'll gnaw your legs off!",
-		"This could've gone better!",
-		"You look like something a skag barfed up!",
-		"What's that smell? Oh wait, it's just you!",
-		"Yo momma's so dumb, she couldn't think of a good ending for this 'yo momma' joke!",
-		"You're one screw short of a screw!",
-		"I bet your mom could do better!",
-		"You look like something a skag barfed up!",
-		"Oh yeah? Well, uh... yeah.",
-		"What is that smell? Oh, never mind... it's just you!",
-		"I'm leaking!",
-		"Good thing I don't have a soul!",
-		"Aww!",
-		"Aww! Come on!",
-		"You can't kill me!",
-		"I'm too pretty to die!",
-		"Crap!",
-		"Robot down!",
-		"No, nononono NO!",
-		"I'll never go back to the bad place!",
-		"I have many regrets!"
-	};
-	const unsigned int	finalDamegeAmount = amount - this->Armor_damage_reduction;
-
-	std::cout << "FR3G-TP " << this->Name;
-	if ( finalDamegeAmount >= this->Hit_points ) {
-		this->Hit_points = 0;
-		std::cout << " becomes dead, when tooks " << finalDamegeAmount;
-		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " );
-		std::cout << crippleReferences[getRandomNumber(cri)] << std::endl;
-	}
-	else {
-		this->Hit_points -= finalDamegeAmount;
-		std::cout << " repairs " << finalDamegeAmount;
-		std::cout << ( (finalDamegeAmount < 2) ? " point of damage ! " : " points of damage ! " );
-		std::cout << funnyReferences[getRandomNumber(fri)] << std::endl;
-	}
-}
-
-void			ScavTrap::beRepaired( unsigned int amount )
-{
-	const unsigned int		fri(5);
-	const std::string	funnyReferences[fri] = {
-		"Health! Eww, what flavor is red?",
-		"Health over here!",
-		"Sweet life juice!",
-		"I found health!",
-		"Healsies!"
-	};
-	const unsigned int	finalRepairAmount = ( amount + this->Hit_points );
-
-	std::cout << "FR3G-TP " << this->Name;
-	if ( finalRepairAmount >= this->Max_hit_points ) {
-		this->Hit_points = this->Max_hit_points;
-		std::cout << " repairs full health, that contains " << this->Max_hit_points;
-		std::cout << " hit poins ! " << funnyReferences[getRandomNumber(fri)] << std::endl;
-	}
-	else {
-		this->Hit_points += finalRepairAmount;
-		std::cout << " repairs " << finalRepairAmount;
-		std::cout << ( (finalRepairAmount < 2) ? " hit point ! " : " hit poins ! " ) << funnyReferences[getRandomNumber(fri)] << std::endl;
-	}
-}
 
 /*
 ** challengeNewcomer method
@@ -230,68 +83,4 @@ void			ScavTrap::challengeNewcomer( const std::string &target )
 	else {
 		std::cout << "I can't launch challengeNewcomer coz i'm out of energy points(" << std::endl;
 	}
-}
-
-/*
-** Getters
-*/
-
-std::string		ScavTrap::getName( void ) const
-{
-	return (this->Name);
-}
-
-unsigned int	ScavTrap::getMeleeAttackDamage( void ) const
-{
-	return (this->Melee_attack_damage);
-}
-
-unsigned int	ScavTrap::getRangedAttackDamage( void ) const
-{
-	return (this->Ranged_attack_damage);
-}
-
-unsigned int	ScavTrap::getArmourDamageReduction( void ) const
-{
-	return (this->Armor_damage_reduction);
-}
-
-unsigned int	ScavTrap::getVaulHunter_dot_exeDamage( void ) const
-{
-	return (this->VaulthunterDotExe_attack_damage);
-}
-
-unsigned int	ScavTrap::getMemeAttackDamage( void ) const
-{
-	return (this->Meme_attack_damage);
-}
-
-unsigned int	ScavTrap::getFartAttackDamage( void ) const
-{
-	return (this->Fart_attack_damage);
-}
-
-unsigned int	ScavTrap::getWeedAttackDamage( void ) const
-{
-	return (this->Weed_attack_damage);
-}
-
-unsigned int	ScavTrap::getTrololoAttackDamage( void ) const
-{
-	return (this->Trololo_attack_damage);
-}
-
-unsigned int	ScavTrap::getLaserAttackDamage( void ) const
-{
-	return (this->Laser_attack_damage);
-}
-
-unsigned int	ScavTrap::getHitPoints( void ) const
-{
-	return (this->Hit_points);
-}
-
-unsigned int	ScavTrap::getEnergyPoints( void ) const
-{
-	return (this->Energy_points);
 }

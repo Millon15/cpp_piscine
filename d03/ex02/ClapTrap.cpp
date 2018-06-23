@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:37:54 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:23:11 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,51 @@
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
 
-ClapTrap::ClapTrap( std::string name ) :
-	Name(name),
+ClapTrap::ClapTrap(	void ) :
+	Name("FR2G-TP"),
 	Hit_points(100),
 	Max_hit_points(100),
 	Energy_points(100),
 	Max_energy_points(100),
 	Level(1),
-	Melee_attack_damage(30),
-	Ranged_attack_damage(20),
-	Armor_damage_reduction(5),
+	Melee_attack_damage(20),
+	Ranged_attack_damage(15),
+	Armor_damage_reduction(3)
 {
-	std::cout << "Directive one: Protect humanity! Directive two: Obey Jack at all costs. Directive three: Dance!" << std::endl;
-	return ;
+	std::cout << "Hey everybody! Check out my package!" << std::endl;
+}
+
+ClapTrap::ClapTrap(	std::string		Name,
+					unsigned int	Hit_points,
+					unsigned int	Max_hit_points,
+					unsigned int	Energy_points,
+					unsigned int	Max_energy_points,
+					unsigned int	Level,
+					unsigned int	Melee_attack_damage,
+					unsigned int	Ranged_attack_damage,
+					unsigned int	Armor_damage_reduction ) :
+	Name(Name),
+	Hit_points(Hit_points),
+	Max_hit_points(Max_hit_points),
+	Energy_points(Energy_points),
+	Max_energy_points(Max_energy_points),
+	Level(Level),
+	Melee_attack_damage(Melee_attack_damage),
+	Ranged_attack_damage(Ranged_attack_damage),
+	Armor_damage_reduction(Armor_damage_reduction)
+{
+	std::cout << "Let's get this party started!" << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap &toCopy )
 {
-	std::cout << "Yes. Remember what? Are... are you my father?" << std::endl;
+	std::cout << "Recompiling my combat code!" << std::endl;
 	*this = toCopy;
 }
 
 ClapTrap::~ClapTrap( void )
 {
-	std::cout << "I'M DEAD I'M DEAD OHMYGOD I'M DEAD!" << std::endl;
-	return ;
+	std::cout << "I can't feel my fingers! Gah! I don't have any fingers!" << std::endl;
 }
 
 
@@ -65,7 +85,7 @@ ClapTrap			&ClapTrap::operator=( const ClapTrap &toEquate )
 
 
 /*****************************************************************************/
-/****************************** Private Methods ******************************/
+/**************************** Protected Methods ******************************/
 /*****************************************************************************/
 
 /*

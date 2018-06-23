@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:40:55 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:23:32 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,20 @@
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
 
+FragTrap::FragTrap( void ) :
+	ClapTrap(),
+	VaulthunterDotExe_attack_damage(0),
+	Meme_attack_damage(1),
+	Fart_attack_damage(1),
+	Weed_attack_damage(1),
+	Trololo_attack_damage(1),
+	Laser_attack_damage(1)
+{
+	std::cout << "Commencing directive three! Uhntssuhntssuhntss..." << std::endl;
+}
+
 FragTrap::FragTrap( std::string name ) :
-	Name(name),
-	Hit_points(100),
-	Max_hit_points(100),
-	Energy_points(100),
-	Max_energy_points(100),
-	Level(1),
-	Melee_attack_damage(30),
-	Ranged_attack_damage(20),
-	Armor_damage_reduction(5),
+	ClapTrap( name, 100, 100, 100, 100, 1, 30, 20, 5 ),
 	VaulthunterDotExe_attack_damage(0),
 	Meme_attack_damage(1),
 	Fart_attack_damage(1),
@@ -34,7 +38,6 @@ FragTrap::FragTrap( std::string name ) :
 	Laser_attack_damage(1)
 {
 	std::cout << "Directive one: Protect humanity! Directive two: Obey Jack at all costs. Directive three: Dance!" << std::endl;
-	return ;
 }
 
 FragTrap::FragTrap( const FragTrap &toCopy )
@@ -46,7 +49,6 @@ FragTrap::FragTrap( const FragTrap &toCopy )
 FragTrap::~FragTrap( void )
 {
 	std::cout << "I'M DEAD I'M DEAD OHMYGOD I'M DEAD!" << std::endl;
-	return ;
 }
 
 

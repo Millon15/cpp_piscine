@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:28 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/22 23:35:59 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:24:37 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 /************************* Constructors and Destructors **********************/
 /*****************************************************************************/
 
+ScavTrap::ScavTrap( void ) :
+	Name("FR3G-TP"),
+	Hit_points(100),
+	Max_hit_points(100),
+	Energy_points(100),
+	Max_energy_points(100),
+	Level(1),
+	Melee_attack_damage(20),
+	Ranged_attack_damage(15),
+	Armor_damage_reduction(3)
+{
+	std::cout << "Look out everybody! Things are about to get awesome!" << std::endl;
+}
+
 ScavTrap::ScavTrap( std::string name ) :
 	Name(name),
 	Hit_points(100),
@@ -23,11 +37,11 @@ ScavTrap::ScavTrap( std::string name ) :
 	Energy_points(100),
 	Max_energy_points(100),
 	Level(1),
-	Melee_attack_damage(30),
-	Ranged_attack_damage(20),
-	Armor_damage_reduction(5)
+	Melee_attack_damage(20),
+	Ranged_attack_damage(15),
+	Armor_damage_reduction(3)
 {
-	std::cout << "Commencing directive three! Uhntssuhntssuhntss..." << std::endl;
+	std::cout << "This time it'll be awesome, I promise!" << std::endl;
 	return ;
 }
 
