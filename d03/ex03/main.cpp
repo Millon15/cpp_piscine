@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 17:02:26 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/23 14:59:09 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/23 14:59:35 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int		main( void )
 	}
 
 	{
-		Claptrap	c;
+		ScavTrap	f("4LL-MT");
+		ClapTrap	c;
 
 		c.rangedAttack(f.getName());
 		c.meleeAttack("You");
