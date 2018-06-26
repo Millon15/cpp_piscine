@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 14:25:57 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/26 17:41:44 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/26 22:02:12 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ MassConvertion				&MassConvertion::operator=( const MassConvertion &toCopy )
 
 
 
-void						MassConvertion::check( double toCheck ) const
+void						MassConvertion::checkFloat( double toCheck ) const
 {
 	const int		classification = fpclassify(toCheck);
 
@@ -49,41 +49,51 @@ void						MassConvertion::check( double toCheck ) const
 	}
 }
 
-char						MassConvertion::convToChar( double toConv )
+void						MassConvertion::checkDecimal( void ) const
 {
-	check(toConv);
-	if ( toConv > static_cast<double>(CHAR_MAX) || toConv < static_cast<double>(CHAR_MIN) ) {
+	const int		feExeption = fetestexcept (FE_OVERFLOW | FE_INVALID | FE_UNDERFLOW);
+
+	if (	feExeption & FE_OVERFLOW ||
+			feExeption & FE_UNDERFLOW ||
+			feExeption & FE_INVALID )
+	{
 		throw MassConvertion::impossible();
 	}
-	else if ( !isprint(static_cast<char>(toConv)) ) {
+}
+
+char						MassConvertion::convToChar( double toConv )
+{
+	char c = static_cast<char>(toConv);
+	checkDecimal();
+	if ( !isprint(static_cast<char>(toConv)) ) {
 		throw MassConvertion::nonDisplayable();
 	}
 
-	return static_cast<char>(toConv);
+	return c;
 }
 
 int							MassConvertion::convToInt( double toConv )
 {
-	check(toConv);
-	if ( toConv > static_cast<double>(INT_MAX) || toConv < static_cast<double>(INT_MIN) ) {
-		throw MassConvertion::impossible();
-	}
+	int i = static_cast<int>(toConv);
+	checkDecimal();
 
-	return static_cast<int>(toConv);
+	return i;
 }
 
 float						MassConvertion::convToFloat( double toConv )
 {
-	check(toConv);
+	float f = static_cast<float>(toConv);
+	checkFloat(toConv);
 
-	return static_cast<float>(toConv);
+	return f;
 }
 
 double						MassConvertion::convToDouble( double toConv )
 {
-	check(toConv);
+	double d = static_cast<double>(toConv);
+	checkFloat(toConv);
 
-	return toConv;
+	return d;
 }
 
 

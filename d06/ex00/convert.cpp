@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:42:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/26 17:47:25 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/26 21:33:09 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ void			printDouble( MassConvertion &m, double d, int precision )
 
 int				checkPrecision( double d, bool isFloat )
 {
-	int			decimal_places = 0;
-	const int	mantissa = ( isFloat ) ? std::numeric_limits<float>::digits10 : std::numeric_limits<double>::digits10;
+	int					decimal_places = 0;
+	static const int	mantissa = \
+	( isFloat ) ? std::numeric_limits<float>::digits10 : std::numeric_limits<double>::digits10;
 
 	do {
 		d *= 10;
 		decimal_places++;
-	} while ( decimal_places < mantissa && d != static_cast<int>(d) );
+	} while ( decimal_places < mantissa && d != static_cast<long long>(d) );
 
 	return decimal_places;
 }
@@ -85,6 +86,7 @@ int				main( int ac, char **av )
 	double			d;
 	int				precision;
 
+	feclearexcept (FE_ALL_EXCEPT);
 	d = atof(av[1]);
 	printChar(m, d);
 	printInt(m, d);
