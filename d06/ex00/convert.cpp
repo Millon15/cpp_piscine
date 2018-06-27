@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 11:42:20 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/26 21:33:09 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/27 17:39:55 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int				main( int ac, char **av )
 	double			d;
 	int				precision;
 
-	feclearexcept (FE_ALL_EXCEPT);
 	d = atof(av[1]);
 	printChar(m, d);
 	printInt(m, d);

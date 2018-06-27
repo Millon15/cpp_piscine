@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 14:25:57 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/26 22:02:12 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/27 17:41:30 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ MassConvertion				&MassConvertion::operator=( const MassConvertion &toCopy )
 
 
 
-
 void						MassConvertion::checkFloat( double toCheck ) const
 {
 	const int		classification = fpclassify(toCheck);
@@ -48,38 +47,26 @@ void						MassConvertion::checkFloat( double toCheck ) const
 		throw MassConvertion::impossible();
 	}
 }
-
-void						MassConvertion::checkDecimal( void ) const
-{
-	const int		feExeption = fetestexcept (FE_OVERFLOW | FE_INVALID | FE_UNDERFLOW);
-
-	if (	feExeption & FE_OVERFLOW ||
-			feExeption & FE_UNDERFLOW ||
-			feExeption & FE_INVALID )
-	{
-		throw MassConvertion::impossible();
-	}
-}
-
 char						MassConvertion::convToChar( double toConv )
 {
+	if ( toConv > static_cast<double>(CHAR_MAX) || toConv < static_cast<double>(CHAR_MIN) ) {
+		throw MassConvertion::impossible();
+	}
 	char c = static_cast<char>(toConv);
-	checkDecimal();
-	if ( !isprint(static_cast<char>(toConv)) ) {
+	if ( !isprint(c) ) {
 		throw MassConvertion::nonDisplayable();
 	}
 
 	return c;
 }
-
 int							MassConvertion::convToInt( double toConv )
 {
-	int i = static_cast<int>(toConv);
-	checkDecimal();
+	if ( toConv > static_cast<double>(INT_MAX) || toConv < static_cast<double>(INT_MIN) ) {
+		throw MassConvertion::impossible();
+	}
 
-	return i;
+	return static_cast<int>(toConv);
 }
-
 float						MassConvertion::convToFloat( double toConv )
 {
 	float f = static_cast<float>(toConv);
@@ -87,7 +74,6 @@ float						MassConvertion::convToFloat( double toConv )
 
 	return f;
 }
-
 double						MassConvertion::convToDouble( double toConv )
 {
 	double d = static_cast<double>(toConv);
@@ -102,24 +88,20 @@ MassConvertion::nonDisplayable::nonDisplayable( void )
 {
 	return ;
 }
-
 MassConvertion::nonDisplayable::nonDisplayable( const nonDisplayable &toCopy )
 {
 	*this = toCopy;
 }
-
 MassConvertion::nonDisplayable::~nonDisplayable( void ) throw()
 {
 	return ;
 }
-
 MassConvertion::nonDisplayable		&MassConvertion::nonDisplayable::operator=( const nonDisplayable &toCopy )
 {
 	static_cast<void>(toCopy);
 
 	return *this;
 }
-
 const char					*MassConvertion::nonDisplayable::what( void ) const throw()
 {
 	return "Non displayable";
@@ -131,24 +113,20 @@ MassConvertion::impossible::impossible( void )
 {
 	return ;
 }
-
 MassConvertion::impossible::impossible( const impossible &toCopy )
 {
 	*this = toCopy;
 }
-
 MassConvertion::impossible::~impossible( void ) throw()
 {
 	return ;
 }
-
 MassConvertion::impossible		&MassConvertion::impossible::operator=( const impossible &toCopy )
 {
 	static_cast<void>(toCopy);
 
 	return *this;
 }
-
 const char					*MassConvertion::impossible::what( void ) const throw()
 {
 	return "impossible";

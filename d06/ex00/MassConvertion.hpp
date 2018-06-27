@@ -6,7 +6,7 @@
 /*   By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 14:25:49 by vbrazas           #+#    #+#             */
-/*   Updated: 2018/06/26 22:01:23 by vbrazas          ###   ########.fr       */
+/*   Updated: 2018/06/27 17:39:25 by vbrazas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 #include <iomanip>
 #include <cmath>
 #include <limits>
-#include <cfenv>
 
 class MassConvertion {
 
 private:
-	void						checkDecimal( void ) const;
 	void						checkFloat( double toCheck ) const;
 
 public:
