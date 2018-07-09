@@ -5,29 +5,49 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vbrazas <vbrazas@student.unit.ua>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/06/18 12:18:09 by vbrazas           #+#    #+#              #
-#    Updated: 2018/06/21 21:35:44 by vbrazas          ###   ########.fr        #
+#    Created: 2017/12/28 19:24:02 by vbrazas           #+#    #+#              #
+#    Updated: 2018/07/02 19:25:30 by vbrazas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C		=	clang++
-FLAGS	=	-Wall -Wextra -Werror
+NAME = eval_expr
 
-NAME	=	eval_expr
-SRC		=	Fixed.cpp main.cpp
-OBJ		=	$(SRC:.cpp=.o)
+SRC_PATH = #classes/
+INC_PATH = ./
+OBJ_PATH = obj/
+
+C = clang++
+WFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -pedantic-errors
+IFLAGS = -I $(INC_PATH)
+LFLAGS = 
+
+FILES = main
+CLASSES = Fixed
+
+SRCS = $(addprefix $(SRC_PATH), $(addsuffix .cpp, $(FILES)))
+SRCS += $(addprefix $(SRC_PATH), $(addsuffix .class.cpp, $(CLASSES)))
+OBJ = $(addprefix $(OBJ_PATH), $(SRCS:%.cpp=%.o))
 
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(C) -o $(NAME) $(FLAGS) $(SRC)
+$(NAME): $(OBJ)
+	$(C) $(WFLAGS) $(LFLAGS) $(IFLAGS) $(OBJ) -o $(NAME)
+
+$(OBJ): | $(OBJ_PATH)
+
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)$(SRC_PATH)$(MODULES_PATH)
+
+$(OBJ_PATH)%.o: %.cpp
+	$(C) $(WFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
-	@ echo "Cleaning..."
+	rm -f $(OBJ)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:
+	rm -f $(OBJ) $(NAME)
+	rm -rf $(OBJ_PATH)
 
 re: fclean all
 
